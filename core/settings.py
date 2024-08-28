@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -25,8 +24,12 @@ SECRET_KEY = 'qyu(9l9v%^+r(vt#ecf+36#lis516#3bo5@bo-rd*d%a=!%8#!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = [
+    '0.0.0.0', 'localhost',
+    'bed94bd8-f85e-4c7e-96dd-b7a0dde1e1c6-00-2w10lokbv3zng.kirk.replit.dev'
+]
 
 # Application definition
 
@@ -37,14 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'homepage',
     'inventory',
     'transactions',
-
-    'widget_tweaks',                            # uses 'django-widget-tweaks' app
-    'crispy_forms',                             # uses 'django-crispy-forms' app
-    'login_required',                           # uses 'django-login-required-middleware' app
+    'widget_tweaks',  # uses 'django-widget-tweaks' app
+    'crispy_forms',  # uses 'django-crispy-forms' app
+    'login_required',  # uses 'django-login-required-middleware' app
 ]
 
 MIDDLEWARE = [
@@ -55,8 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'login_required.middleware.LoginRequiredMiddleware',    # middleware used for global login
+    'login_required.middleware.LoginRequiredMiddleware',  # middleware used for global login
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -64,7 +64,9 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates"],  # included 'templates' directory for django to access the html templates
+        'DIRS': [
+            "templates"
+        ],  # included 'templates' directory for django to access the html templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +81,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -90,25 +91,27 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -123,19 +126,18 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'                     # bootstrap template crispy-form uses
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # bootstrap template crispy-form uses
 
-LOGIN_REDIRECT_URL = 'home'                             # sets the login redirect to the 'home' page after login
+LOGIN_REDIRECT_URL = 'home'  # sets the login redirect to the 'home' page after login
 
-LOGIN_URL = 'login'                                     # sets the 'login' page as default when user tries to illegally access profile or other hidden pages
+LOGIN_URL = 'login'  # sets the 'login' page as default when user tries to illegally access profile or other hidden pages
 
-LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [                    # urls ignored by the login_required. Can be accessed with out logging in
+LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [  # urls ignored by the login_required. Can be accessed with out logging in
     'login',
     'logout',
     'about',
